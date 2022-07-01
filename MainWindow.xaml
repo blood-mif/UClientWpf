@@ -1,0 +1,532 @@
+﻿<Window x:Class="UodClientWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ctrl="clr-namespace:PpdControls.UOD;assembly=PpdControls"
+        xmlns:local="clr-namespace:UodClientWpf" xmlns:usercontrols="clr-namespace:UodClientWpf.ForTest.UserC"
+        mc:Ignorable="d"
+        Title="UOD Technol"
+        
+        MinWidth="450"
+        SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    
+    <Window.Resources>
+        <LinearGradientBrush x:Key="GrayBlueGradientBrush"
+                  StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="DarkGray" Offset="0" />
+            <GradientStop Color="#CCCCFF" Offset="0.5" />
+            <GradientStop Color="DarkGray" Offset="1" />
+        </LinearGradientBrush>
+        
+        <Style TargetType="Button" x:Key="baseStyle">
+            <Setter Property="Margin" Value="0,3,0,0" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="MinWidth" Value="80"/>
+            <Setter Property="Background" Value="{StaticResource GrayBlueGradientBrush}" />
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource  baseStyle}"/>
+
+
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="0,3,10,0" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="MinWidth" Value="70"/>
+        </Style>
+
+
+        <Style TargetType="Button" x:Key="Step1" BasedOn="{StaticResource baseStyle}">
+            <Style.Triggers>
+                <DataTrigger Value="False"
+                                     Binding="{Binding Path=FlagChooseTypeDevice}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagChooseTypeDevice}">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+
+                <!--<MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsPressed" Value="True"/>
+                        <Condition Property="IsEnabled" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter Property="Foreground" Value="Green"/>
+                    </MultiTrigger.Setters>
+                </MultiTrigger>-->
+                <!--<Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="Green"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>-->
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Button" x:Key="GodsMode" BasedOn="{StaticResource  Step1}">
+                <Setter Property="Margin" Value="10,3,10,0" />
+                <Setter Property="Height" Value="35" />
+                <Setter Property="MinWidth" Value="80"/>
+                <Setter Property="Background" Value="{StaticResource GrayBlueGradientBrush}" />
+            <Style.Triggers>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=GodsMode}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+                <DataTrigger Value="true"
+                                     Binding="{Binding Path=GodsMode}">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=EnabledButton}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Value="True"
+                                     Binding="{Binding Path=EnabledButton}">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="WrapPanel" x:Key="GodsModeWrapPanel">
+            <Style.Triggers>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=GodsMode}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+                <DataTrigger Value="true"
+                                     Binding="{Binding Path=GodsMode}">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=EnabledButton}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Value="True"
+                                     Binding="{Binding Path=EnabledButton}">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
+        
+        <Style TargetType="Button" x:Key="Step2" BasedOn="{StaticResource  baseStyle}">
+            <Style.Triggers>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=FlagChooseReversModa}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Value="true"
+                                     Binding="{Binding Path=FlagChooseReversModa}">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style TargetType="Button" x:Key="Step3" BasedOn="{StaticResource  baseStyle}">
+            <Style.Triggers>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=FlagChooseDurationModa}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Value="true"
+                                     Binding="{Binding Path=FlagChooseDurationModa}">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Button" x:Key="Step4" BasedOn="{StaticResource  baseStyle}">
+            <Style.Triggers>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=FlagChooseFistModa}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Value="true"
+                                     Binding="{Binding Path=FlagChooseFistModa}">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="GroupBox" x:Key="GBStep1">
+            <Style.Triggers>
+                <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagChooseTypeDevice}">
+                    <Setter Property="Background" Value="LightGreen" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>      
+        <Style TargetType="GroupBox" x:Key="GBStep2">
+            <Style.Triggers>
+                <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagChooseReversModa}">
+                    <Setter Property="Background" Value="LightGreen" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="GroupBox" x:Key="GBStep3">
+            <Style.Triggers>
+                <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagChooseDurationModa}">
+                    <Setter Property="Background" Value="LightGreen" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="GroupBox" x:Key="GBStep4">
+            <Style.Triggers>
+                <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagChooseFistModa}">
+                    <Setter Property="Background" Value="LightGreen" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="GroupBox" x:Key="GBStep5">
+            <Style.Triggers>
+                <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagChoosePower}">
+                    <Setter Property="Background" Value="LightGreen" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Button" x:Key="Step5" BasedOn="{StaticResource  baseStyle}">
+            <Style.Triggers>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=FlagChoosePower}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Value="true"
+                                     Binding="{Binding Path=FlagChoosePower}">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Button" x:Key="Step6" BasedOn="{StaticResource  baseStyle}">
+            <Style.Triggers>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=FlagShowDate}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Value="true"
+                                     Binding="{Binding Path=FlagShowDate}">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" x:Key="Step7" BasedOn="{StaticResource  baseStyle}">
+            <Style.Triggers>
+                <DataTrigger Value="true"
+                                     Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" x:Key="StepOffPower" BasedOn="{StaticResource  baseStyle}">
+            <Style.Triggers>
+                <DataTrigger Value="false"
+                                     Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Value="true"
+                                     Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                    <Setter Property="IsEnabled" Value="True" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="0.45*" MinHeight="320"/>
+            <RowDefinition Height="0.25*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*" MinWidth="150"/>
+            <ColumnDefinition Width="0.4*" MinWidth="150"/>
+            <ColumnDefinition Width="0.4*" MinWidth="150"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
+            <Menu.Style>
+                <Style TargetType="{x:Type Menu}">
+                    <Style.Triggers>
+
+                        <DataTrigger Value="False"
+                                     Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                            <Setter Property="Grid.ColumnSpan" Value="3" />
+                        </DataTrigger>
+                        <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                            <Setter Property="Grid.ColumnSpan" Value="4" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Menu.Style>
+            <MenuItem Header="Настройки передачи" Command="{Binding Path=CmdRecivePropertis}"/>
+            <CheckBox Margin="1" IsChecked="{Binding Path=GodsMode, Mode=TwoWay}">Режим разработчика</CheckBox>
+        </Menu>
+
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <GroupBox Header="Питание Uod" Style="{StaticResource GBStep5}">
+                <StackPanel Orientation="Vertical">
+                    <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="1" Style="{StaticResource Step5}">Включить</Button>
+                    <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="2" Style="{StaticResource Step5}">Пробное включение</Button>
+                    <!--<Button Command ="{Binding Path=CmdStartReg}" CommandParameter="65" Style="{StaticResource StepOffPower}">Выключить</Button>-->
+                    <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="65" Style="{StaticResource baseStyle}">Выключить</Button>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Выбор моды" Style="{StaticResource GBStep4}">
+                <StackPanel Orientation="Vertical">
+                    <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="9" Style="{StaticResource Step4}" >1</Button>
+                    <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="73" Style="{StaticResource Step4}" >0</Button>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Реверс моды" Style="{StaticResource GBStep2}">
+                <StackPanel Orientation="Vertical">
+                    <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="72" Style="{StaticResource Step2}" >Включить</Button>
+                    <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="8"  Style="{StaticResource Step2}">Выключить</Button>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Длительность моды" Style="{StaticResource GBStep3}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Text="{Binding Path=ModaDuration}" FontSize="20"></TextBox>
+                    <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="10" Style="{StaticResource Step3}" >Сохр</Button>
+                </StackPanel>
+            </GroupBox>
+            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="30" Style="{StaticResource GodsMode}" >Reg 30</Button>
+            <WrapPanel Style="{StaticResource GodsModeWrapPanel}">
+                <Label FontSize="20" Margin="10,0,0,0">Срп</Label>
+                <TextBox Text="{Binding Path=Srp}" FontSize="20" MinWidth="110"></TextBox>
+            </WrapPanel>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="1" Grid.Column="1" >
+            <GroupBox  Header="Режимы ">
+                <StackPanel Orientation="Vertical">
+                    <GroupBox Header="Тип прибора" Style="{StaticResource GBStep1}">
+                        <StackPanel Orientation="Vertical">
+                            <Button Command ="{Binding CmdStartReg}" CommandParameter="45" Style="{StaticResource Step1}" Content="МТ 601"/>
+                            <Button Command ="{Binding CmdStartReg}" CommandParameter="61" Style="{StaticResource Step1}" Content="МТ 601 медленный"/>
+                            <Button Command ="{Binding CmdStartReg}" CommandParameter="13" Style="{StaticResource Step1}" Content="МТ 501"/>
+                            <Button Command ="{Binding CmdStartReg}" CommandParameter="29" Style="{StaticResource Step1}" Content="МТ 401"/>
+                            <Button Command ="{Binding CmdStartReg}" CommandParameter="77" Style="{StaticResource StepOffPower}"  Content="Остановить" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Дополнительно">
+                        <StackPanel Orientation="Vertical">
+                            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="12" Content="информация мт" Style="{StaticResource Step7}" />
+                            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="11"  Content="U  пьезокерамики" Style="{StaticResource Step7}" />
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+            </GroupBox>
+            <Button Grid.Row="2" Grid.Column="1" Margin="5,0,5,2" Height="35" Command ="{Binding Path=CmdStartReg}" CommandParameter="101101"  >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Style.Triggers>
+                            <DataTrigger Value="false" 
+                                         Binding="{Binding Path=FlagVisibleLogBar}">
+                                <Setter Property="Content" Value="Открыть архив команд" />
+                            </DataTrigger>
+                            <DataTrigger Value="true" 
+                                         Binding="{Binding Path=FlagVisibleLogBar}">
+                                <Setter Property="Content" Value="Закрыть архив команд" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <GroupBox Header="Шаг деления Mu">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Text="{Binding Path=SetDelitelMu}" FontSize="20"></TextBox>
+                    <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="7" >Сохр</Button>
+                </StackPanel>
+            </GroupBox>
+            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="32" Style="{StaticResource GodsMode}" >Reg 32</Button>
+            <WrapPanel Style="{StaticResource GodsModeWrapPanel}">
+                <Label FontSize="20" Margin="10,0,0,0">UCapX</Label>
+                <TextBox Text="{Binding Path=UCapX}" FontSize="20" MinWidth="80"></TextBox>
+            </WrapPanel>
+            <WrapPanel Style="{StaticResource GodsModeWrapPanel}">
+                <Label FontSize="20" Margin="10,0,0,0">UCapY</Label>
+                <TextBox Text="{Binding Path=UCapY}" FontSize="20" MinWidth="80"></TextBox>
+            </WrapPanel>
+            <WrapPanel Style="{StaticResource GodsModeWrapPanel}">
+                <Label FontSize="20" Margin="10,0,0,0">UCapZ</Label>
+                <TextBox Text="{Binding Path=UCapZ}" FontSize="20" MinWidth="80"></TextBox>
+            </WrapPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" >
+            <GroupBox  Header="Магнитный стенд ">
+                <StackPanel Orientation="Vertical">
+                    <GroupBox  Header="Питание">
+                        <StackPanel Orientation="Vertical">
+                            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="3" >Включить</Button>
+                            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="67" >Выключить</Button>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox  Header="Ось кольца стенда">
+                        <StackPanel Orientation="Vertical">
+                            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="6" >Ось X</Button>
+                            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="38" >Ось Y</Button>
+                            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="70" >Ось Z</Button>
+                            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="102" >Выключить кольца</Button>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox  Header="Полярность">
+                        <StackPanel Orientation="Vertical">
+                            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="5" >Реверс</Button>
+                            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="69" >Норма</Button>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </GroupBox>
+            <Button Command ="{Binding Path=CmdStartReg}" CommandParameter="33" Style="{StaticResource GodsMode}" >Reg 33</Button>
+        </StackPanel>
+
+
+        <GroupBox Header="Архив команд" Grid.Row="2" Grid.Column="0" >
+            <GroupBox.Style>
+                <Style TargetType="{x:Type GroupBox}">
+                    <Style.Triggers>
+                        <DataTrigger Value="false" 
+                                         Binding="{Binding Path=FlagVisibleLogBar}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Value="true" 
+                                         Binding="{Binding Path=FlagVisibleLogBar}">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Value="False"
+                                     Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                            <Setter Property="Grid.ColumnSpan" Value="3" />
+                        </DataTrigger>
+                        <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                            <Setter Property="Grid.ColumnSpan" Value="4" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+            <ScrollViewer Name="ScrollLogeBar" CanContentScroll="True" >
+                <TextBox Height="300" Text="{Binding Path=HistoryLoge}"   >
+                    <TextBox.Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="IsReadOnly" Value="True"/>
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                            <Setter Property="AcceptsReturn" Value="True"/>
+                            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                            <Style.Triggers>
+                                <DataTrigger Value="False"
+                                         Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                                    <Setter Property="Width" Value="340" />
+                                </DataTrigger>
+                                <DataTrigger Value="True"
+                                         Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                                    <Setter Property="Width" Value="800" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+            </ScrollViewer>
+        </GroupBox>
+        <WrapPanel Grid.Column="4" Grid.Row="1" Orientation="Vertical" Margin="0,20,0,0">
+            <WrapPanel.Style>
+                <Style TargetType="{x:Type WrapPanel}">
+                    <Style.Triggers>
+                        <DataTrigger Value="False"
+                                     Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagEnableButtonSyncroReg}">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </WrapPanel.Style>
+            <TabControl >
+                <TabItem Header="308" IsSelected="{Binding Reg308}" Visibility="Collapsed">
+                    <!--<TabItem.Style>
+                        <Style TargetType="{x:Type TabItem}">
+                            <Style.Triggers>
+                                <DataTrigger Value="false" 
+                                         Binding="{Binding Path=Reg308}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Value="true" 
+                                         Binding="{Binding Path=Reg308}">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TabItem.Style>-->
+                <usercontrols:UserControlSyncRegime DataContext="{Binding Path=VMS}" />
+                </TabItem>
+                <TabItem Header="reg 33" IsSelected="{Binding Reg33}" Visibility="Collapsed">
+                    <usercontrols:UserControlReg33 DataContext="{Binding Path=VMS}"/>
+                </TabItem>
+                <TabItem Header="reg 32" IsSelected="{Binding Reg32}" Visibility="Collapsed">
+                    <usercontrols:UserControlReg32 DataContext="{Binding Path=VMS}"/>
+                </TabItem>
+                <TabItem Header="reg 30" IsSelected="{Binding Reg30}" Visibility="Collapsed">
+                    <usercontrols:UserControlReg30 DataContext="{Binding Path=VMS}"/>
+                </TabItem>
+            </TabControl>
+
+            <WrapPanel Margin="0,70,0,0">
+                <Button Width="140" Content="Начать запись данных" Margin="20,0" Command ="{Binding Path=CmdStartReg}" CommandParameter="202202" >
+                    <Button.Style>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagWriteDate}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Value="False"
+                                     Binding="{Binding Path=FlagWriteDate}">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                    </Style>
+                    </Button.Style>
+                </Button>
+                <Button Width="120" Content="Сохранить данные" Margin="20,0" Command ="{Binding Path=CmdStartReg}" CommandParameter="303303" >
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Value="False"
+                                     Binding="{Binding Path=FlagWriteDate}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Value="True"
+                                     Binding="{Binding Path=FlagWriteDate}">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Width="130" Content="Остановить передачу" Margin="20,0" Command ="{Binding Path=CmdStartReg}" CommandParameter="77" />
+            </WrapPanel>
+        </WrapPanel>
+    </Grid>
+
+</Window>

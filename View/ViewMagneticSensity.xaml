@@ -1,0 +1,22 @@
+﻿<Window x:Class="UodClientWpf.View.ViewMagneticSensity"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UodClientWpf.View"
+        mc:Ignorable="d"
+        Title="ViewMagneticSensity" Height="566.786" Width="631.071">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Прогрев">
+                <local:UserControlMesureSensity DataContext="{Binding HeatingLst}"/>
+            </TabItem>
+            <TabItem Header="Ось X">
+            </TabItem>
+            <TabItem Header="Ось Y">
+            </TabItem>
+            <TabItem Header="Ось Z">
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

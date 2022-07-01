@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="UodClientWpf.ForTest.UserC.UserControlSyncRegime"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UodClientWpf.ForTest.UserC"
+             mc:Ignorable="d" 
+             Height="260" Width="450">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="10,5,0,0" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="2,2,7,2" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="GirSummX"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=GirSummX}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="GirSummY"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=GirSummY}"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="GirSummZ"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=GirSummZ}"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="GirRasnX"/>
+        <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Path=GirRasnX}"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="GirRasnY"/>
+        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Path=GirRasnY}"/>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="GirRasnZ"/>
+        <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding Path=GirRasnZ}"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="4" Text="UpkX"/>
+        <TextBox Grid.Row="1" Grid.Column="5" Text="{Binding Path=UPkX}"/>
+        <TextBlock Grid.Row="2" Grid.Column="4" Text="UpkY"/>
+        <TextBox Grid.Row="2" Grid.Column="5" Text="{Binding Path=UPkY}"/>
+        <TextBlock Grid.Row="3" Grid.Column="4" Text="UpkZ"/>
+        <TextBox Grid.Row="3" Grid.Column="5" Text="{Binding Path=UPkZ}"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Time"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Time}"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="RsTimeAns"/>
+        <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding Path=RsTimeAns}"/>
+        <TextBlock Grid.Row="0" Grid.Column="4" Text="Cap" Visibility="Collapsed"/>
+        <TextBox Grid.Row="0" Grid.Column="5" Text="{Binding Path=Cap}" Visibility="Collapsed"/>
+
+        <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="SensorNum"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=SensorNum}"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="KeyValue"/>
+        <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Path=KeyValue}"/>-->
+
+        <TextBlock Grid.Row="5" Grid.Column="4" Text="MmPhase"/>
+        <TextBox Grid.Row="5" Grid.Column="5" Text="{Binding Path=MmPhase}"/>
+        <TextBlock Grid.Row="6" Grid.Column="4" Text="TKorp"/>
+        <TextBox Grid.Row="6" Grid.Column="5" Text="{Binding Path=TKorp}"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Moda"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=Moda}"/>
+        <TextBlock Grid.Row="5" Grid.Column="2" Text="Ksf"/>
+        <TextBox Grid.Row="5" Grid.Column="3" Text="{Binding Path=Ksf}"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="N"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Path=N}"/>
+        <TextBlock Grid.Row="6" Grid.Column="2" Text="Ks"/>
+        <TextBox Grid.Row="6" Grid.Column="3" Text="{Binding Path=Ks}"/>
+
+
+        <TextBlock Grid.Row="8" Grid.Column="0" Text="TXhot"/>
+        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Path=TXhot}"/>
+        <TextBlock Grid.Row="8" Grid.Column="2" Text="TYhot"/>
+        <TextBox Grid.Row="8" Grid.Column="3" Text="{Binding Path=TYhot}"/>
+        <TextBlock Grid.Row="8" Grid.Column="4" Text="TZhot"/>
+        <TextBox Grid.Row="8" Grid.Column="5" Text="{Binding Path=TZhot}"/>
+
+        <TextBlock Grid.Row="9" Grid.Column="0" Text="TXCold"/>
+        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Path=TXCold}"/>
+        <TextBlock Grid.Row="9" Grid.Column="2" Text="TYCold"/>
+        <TextBox Grid.Row="9" Grid.Column="3" Text="{Binding Path=TYCold}"/>
+        <TextBlock Grid.Row="9" Grid.Column="4" Text="TZCold"/>
+        <TextBox Grid.Row="9" Grid.Column="5" Text="{Binding Path=TZCold}"/>
+        
+        <TextBlock Grid.Row="11" Grid.Column="0" Text="Skip"/>
+        <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding Path=Skip}"/>
+        <TextBlock Grid.Row="11" Grid.Column="2" Text="Error"/>
+        <TextBox Grid.Row="11" Grid.Column="3" Text="{Binding Path=Error}"/>
+
+        <!--<TextBlock Grid.Row="10" Grid.Column="0" Text="SensorNum"/>
+        <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Path=SensorNum}"/>
+
+        <TextBlock Grid.Row="10" Grid.Column="2" Text="KeyValue"/>
+        <TextBox Grid.Row="10" Grid.Column="3" Text="{Binding Path=KeyValue}"/>-->
+
+        <!--<Button Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2"  Content="Сохранить" Margin="20,35,20,5"  Command ="{Binding Path=CmdStartReg}" CommandParameter="77" />-->
+        <!--<Button Grid.Row="10" Grid.Column="3" Grid.ColumnSpan="2" Content="Остановить" Margin="20,35,20,5"   />-->
+
+    </Grid>
+</UserControl>

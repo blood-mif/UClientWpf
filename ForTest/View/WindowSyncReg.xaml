@@ -1,0 +1,84 @@
+﻿<Window x:Class="UodClientWpf.ForTest.View.WindowSyncReg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UodClientWpf.ForTest.View"
+        mc:Ignorable="d"
+        Title="SyncReg" Height="200" Width="500">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="10,5,0,0" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="GirSummX"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=GirSummX}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="GirSummY"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=GirSummY}"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="GirSummZ"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=GirSummZ}"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="GirRasnX"/>
+        <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Path=GirRasnX}"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="GirRasnY"/>
+        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Path=GirRasnY}"/>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="GirRasnZ"/>
+        <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding Path=GirRasnZ}"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="4" Text="UpkX"/>
+        <TextBox Grid.Row="1" Grid.Column="5" Text="{Binding Path=UPkX}"/>
+        <TextBlock Grid.Row="2" Grid.Column="4" Text="UpkY"/>
+        <TextBox Grid.Row="2" Grid.Column="5" Text="{Binding Path=UPkY}"/>
+        <TextBlock Grid.Row="3" Grid.Column="4" Text="UpkZ"/>
+        <TextBox Grid.Row="3" Grid.Column="5" Text="{Binding Path=UPkZ}"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Time"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Time}"/>
+
+
+        <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="SensorNum"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=SensorNum}"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="KeyValue"/>
+        <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Path=KeyValue}"/>-->
+
+        <TextBlock Grid.Row="5" Grid.Column="4" Text="Cap"/>
+        <TextBox Grid.Row="5" Grid.Column="5" Text="{Binding Path=Cap}"/>
+        <TextBlock Grid.Row="6" Grid.Column="4" Text="Ksf"/>
+        <TextBox Grid.Row="6" Grid.Column="5" Text="{Binding Path=Ksf}"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Moda"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=Moda}"/>
+        <TextBlock Grid.Row="5" Grid.Column="2" Text="MmPhase"/>
+        <TextBox Grid.Row="5" Grid.Column="3" Text="{Binding Path=MmPhase}"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="N"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Path=N}"/>
+        <TextBlock Grid.Row="6" Grid.Column="2" Text="Ks"/>
+        <TextBox Grid.Row="6" Grid.Column="3" Text="{Binding Path=Ks}"/>
+
+    </Grid>
+</Window>
